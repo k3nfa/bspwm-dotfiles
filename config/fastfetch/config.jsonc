@@ -1,0 +1,37 @@
+{
+  "logo": {
+    "type": "kitty-icat",
+    "source": "/home/k3nfa/.config/fastfetch/logo.png",
+    "width": 22,
+    "height": 12,
+    "padding": { "top": 0, "left": 2, "right": 3 }
+  },
+  "display": { "separator": "  " },
+  "modules": [
+    { "type": "custom", "format": "\u001b[90m╭───────────╮\u001b[0m" },
+    { "type": "command", "text": "whoami",
+      "key": "\u001b[90m│ \u001b[91m\uf007 user    \u001b[90m│\u001b[0m" },
+    { "type": "command", "text": "hostname",
+      "key": "\u001b[90m│ \u001b[92m\uf233 host    \u001b[90m│\u001b[0m" },
+    { "type": "os",
+      "key": "\u001b[90m│ \u001b[94m\uf17c distro  \u001b[90m│\u001b[0m" },
+    { "type": "kernel",
+      "key": "\u001b[90m│ \u001b[95m\uf013 kernel  \u001b[90m│\u001b[0m" },
+    { "type": "uptime", "format": "{hours} Hrs {minutes} Mins",
+      "key": "\u001b[90m│ \u001b[93m\uf017 uptime  \u001b[90m│\u001b[0m" },
+    { "type": "terminal",
+      "key": "\u001b[90m│ \u001b[91m\uf120 term    \u001b[90m│\u001b[0m" },
+    { "type": "shell",
+      "key": "\u001b[90m│ \u001b[92m\uf489 shell   \u001b[90m│\u001b[0m" },
+    { "type": "disk",
+      "key": "\u001b[90m│ \u001b[96m\uf0a0 disk    \u001b[90m│\u001b[0m" },
+    { "type": "memory",
+      "key": "\u001b[90m│ \u001b[95m\uf2db memory  \u001b[90m│\u001b[0m" },
+    { "type": "localip",
+      "key": "\u001b[90m│ \u001b[94m\uf1eb network \u001b[90m│\u001b[0m" },
+    { "type": "custom", "format": "\u001b[90m├───────────┤\u001b[0m" },
+    { "type": "custom",
+      "format": "\u001b[90m│ \u001b[97m\uf1fc colors  \u001b[90m│  \u001b[97m●  \u001b[91m●  \u001b[92m●  \u001b[93m●  \u001b[94m●  \u001b[95m●  \u001b[96m●\u001b[0m" },
+    { "type": "custom", "format": "\u001b[90m╰───────────╯\u001b[0m" }
+  ]
+}

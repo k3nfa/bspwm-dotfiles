@@ -1,0 +1,34 @@
+* {
+  bg: #181825ee;
+  fg: #cdd6f4;
+  accent: #89b4fa;
+  background-color: transparent;
+  text-color: @fg;
+}
+window {
+  location: south;
+  anchor: south;
+  width: 100%;
+  padding: 20px;
+  background-color: @bg;
+}
+mainbox { children: [listview]; }
+listview {
+  columns: 5;
+  lines: 1;
+  spacing: 16px;
+  fixed-columns: true;
+  scrollbar: false;
+}
+element {
+  orientation: vertical;
+  padding: 10px;
+  spacing: 8px;
+  border-radius: 16px;
+}
+element selected.normal {
+  background-color: @accent;
+  text-color: #181825;
+}
+element-icon { size: 220px; horizontal-align: 0.5; }
+element-text { horizontal-align: 0.5; }

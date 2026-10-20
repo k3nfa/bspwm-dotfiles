@@ -1,0 +1,45 @@
+user: 223
+group: 187
+permission:
+  read: 114
+  write: 222
+  exec: 211
+  exec-sticky: 141
+  no-access: 245
+  octal: 111
+  acl: 114
+  context: 109
+date:
+  hour-old: 114
+  day-old: 114
+  older: 108
+size:
+  none: 245
+  small: 222
+  medium: 222
+  large: 216
+inode:
+  valid: 141
+  invalid: 245
+links:
+  valid: 141
+  invalid: 245
+tree-edge: 245
+file-type:
+  file:
+    exec-uid: 114
+    uid-no-exec: 223
+    exec-no-uid: 114
+    no-exec-no-uid: 255
+  dir:
+    uid: 111
+    no-uid: 111
+  pipe: 222
+  symlink:
+    default: 117
+    broken: 203
+    missing-target: 203
+  block-device: 211
+  char-device: 211
+  socket: 211
+  special: 211

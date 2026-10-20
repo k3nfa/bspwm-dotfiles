@@ -1,0 +1,46 @@
+* { all: unset; font-family: "Hack Nerd Font"; }
+
+.contenedor {
+  background-color: rgba(17, 21, 31, 0.92);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.reloj { margin-bottom: 6px; }
+
+.num {
+  font-size: 54px;
+  font-weight: bold;
+  color: #b4c3dc;
+}
+
+.sep {
+  min-width: 3px;
+  min-height: 60px;
+  margin: 0 18px;
+  border-radius: 2px;
+  background-image: linear-gradient(to bottom, #f38ba8, #89b4fa);
+}
+
+.fecha {
+  font-size: 15px;
+  font-weight: bold;
+  color: #8fa3c0;
+  margin-bottom: 14px;
+}
+
+.cal-box {
+  background-color: rgba(60, 80, 80, 0.55);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+calendar {
+  color: #cdd6f4;
+  font-size: 14px;
+  padding: 4px;
+}
+calendar.header { color: #cba6f7; font-weight: bold; }
+calendar.button { color: #cba6f7; padding: 2px 8px; }
+calendar:selected { color: #181825; background-color: #cba6f7; border-radius: 6px; }
+calendar:indeterminate { color: #f38ba8; }

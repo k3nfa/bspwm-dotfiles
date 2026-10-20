@@ -1,0 +1,85 @@
+# Terminal y lanzador
+super + Return
+    kitty
+super + d
+    rofi -show drun
+
+# Selector de wallpapers (lo creamos en el paso 4)
+super + w
+    ~/.config/bspwm/scripts/wallpaper-selector.sh
+
+# Bloquear pantalla (lo creamos en el paso 7)
+super + l
+    ~/.config/bspwm/scripts/lock.sh
+
+# Recargar atajos / reiniciar bspwm / salir
+super + Escape
+    pkill -USR1 -x sxhkd
+super + alt + r
+    bspc wm -r
+super + alt + q
+    bspc quit
+
+# Cerrar ventana
+super + q
+    bspc node -c
+
+# Estado de la ventana: tiled, pseudo, flotante, pantalla completa
+super + {t,shift + t,s,f}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Monocle (una ventana a pantalla completa en el escritorio)
+super + m
+    bspc desktop -l next
+
+# Enfocar / mover ventana con flechas
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+# Ir a escritorio / mandar ventana a escritorio
+super + {_,shift + }{1-6}
+    bspc {desktop -f,node -d} '^{1-6}'
+
+# Redimensionar con Super + Alt + flechas
+super + alt + {Left,Down,Up,Right}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Volumen
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Firefox
+super + shift + f
+    firefox-esr || firefox
+
+
+# Mostrar / ocultar calendario
+super + c
+    ~/.config/eww/toggle.sh
+
+# --- atajos extra ---
+# Recargar entorno / cerrar sesión
+super + shift + r
+    bspc wm -r
+super + shift + q
+    bspc quit
+
+# Preselectores
+super + ctrl + alt + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+super + ctrl + alt + space
+    bspc node -p cancel
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+super + ctrl + m
+    bspc node -g marked
+super + y
+    bspc node newest.marked.local -n newest.!automatic.local
+
+# Mover ventana flotante con el teclado
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}

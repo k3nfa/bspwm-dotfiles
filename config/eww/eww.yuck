@@ -1,0 +1,20 @@
+(defpoll hora :interval "5s" "date +%H")
+(defpoll minuto :interval "5s" "date +%M")
+(defpoll fecha :interval "60s" "~/.config/eww/scripts/fecha.sh")
+
+(defwidget reloj []
+  (box :class "contenedor" :orientation "v" :space-evenly false
+    (box :class "reloj" :orientation "h" :halign "center" :space-evenly false
+      (label :class "num" :text hora)
+      (box :class "sep")
+      (label :class "num" :text minuto))
+    (label :class "fecha" :text fecha)
+    (box :class "cal-box"
+      (calendar :class "cal"))))
+
+(defwindow calendario
+  :monitor 0
+  :geometry (geometry :x "20px" :y "60px" :width "320px" :anchor "top right")
+  :stacking "bg"
+  :windowtype "dock"
+  (reloj))
