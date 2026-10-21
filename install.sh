@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 # Entorno bspwm para Parrot y Kali · by k3nfa
-# Uso: ./install.sh [--dry-run] [--root] [--yes]
+# Uso: ./install.sh [--dry-run] [--no-root] [--yes]
 set -uo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
 LOG="$HOME/.entorno-install.log"
-DRY=0; DO_ROOT=0; ASSUME_YES=0; UNKNOWN=0
+DRY=0; DO_ROOT=1; ASSUME_YES=0; UNKNOWN=0
 for a in "$@"; do
   case "$a" in
     --dry-run) DRY=1 ;;
     --root)    DO_ROOT=1 ;;
+    --no-root) DO_ROOT=0 ;;
     -y|--yes)  ASSUME_YES=1 ;;
-    -h|--help) echo "Uso: ./install.sh [--dry-run] [--root] [--yes]"; exit 0 ;;
+    -h|--help) echo "Uso: ./install.sh [--dry-run] [--no-root] [--yes]"; exit 0 ;;
   esac
 done
 
@@ -107,7 +108,7 @@ printf '  %s╰─%s\n\n' "$D" "$X"
 printf '  %sSe va a:%s\n' "$BOLD" "$X"
 printf '    %s1%s paquetes base y extra     %s4%s copiar tus configuraciones (con respaldo)\n' "$P" "$X" "$P" "$X"
 printf '    %s2%s fuente Nerd Font          %s5%s compilar Eww (calendario)\n' "$P" "$X" "$P" "$X"
-printf '    %s3%s Powerlevel10k             %s6%s zsh como shell por defecto\n\n' "$P" "$X" "$P" "$X"
+printf '    %s3%s Powerlevel10k             %s6%s zsh y prompt (tú y root)\n\n' "$P" "$X" "$P" "$X"
 
 if [ "$ASSUME_YES" = 0 ]; then
   [ "$UNKNOWN" = 1 ] && printf '  %s!%s Sistema no probado (solo Parrot y Kali).\n' "$Y" "$X"
@@ -255,7 +256,7 @@ fi
 if [ "$DO_ROOT" = 1 ]; then
   task "Configurando root (zsh, prompt y lsd)" bash -c 'sudo cp ~/.zshrc /root/.zshrc && sudo cp ~/.p10k.zsh /root/.p10k.zsh && sudo mkdir -p /root/.config/lsd && sudo cp ~/.config/lsd/*.yaml /root/.config/lsd/ && sudo chsh -s "$(command -v zsh)" root'
 else
-  skip "Root sin tocar (usa --root para darle el mismo prompt)"
+  skip "Root sin tocar (lo pediste con --no-root)"
 fi
 
 # ---------- Resumen ----------
