@@ -7,9 +7,7 @@ bspwm + sxhkd + polybar (píldoras) + picom (animaciones) + rofi + kitty + Power
 ~~~bash
 git clone https://github.com/k3nfa/bspwm-dotfiles.git
 cd bspwm-dotfiles
-./install.sh --dry-run   # solo muestra lo que haría
-./install.sh             # instala (tu usuario y root con el mismo prompt)
-./install.sh --no-root   # igual, pero sin tocar root
+./install.sh
 ~~~
 
 Después cierra sesión y elige **bspwm** en la pantalla de inicio. Tu configuración anterior queda respaldada en `~/.entorno-backup-FECHA`.
