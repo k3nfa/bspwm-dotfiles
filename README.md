@@ -41,3 +41,23 @@ Probado en Parrot Security. En una VM de VMware activa la **aceleración 3D** (s
 | Ctrl + R / Ctrl + T | fzf: historial / archivos |
 
 Para fijar un objetivo en la barra: `settarget 10.10.11.5 nombre` y `cleartarget`.
+
+## Capturas
+
+### Escritorio
+
+Polybar, fastfetch, cava, cmatrix, lanzador de rofi y calendario de Eww.
+
+![Escritorio](screenshots/escritorio.png)
+
+### Selector de wallpapers
+
+Super + W abre las miniaturas y cambia el fondo al instante.
+
+![Selector de wallpapers](screenshots/wallpapers.png)
+
+### Pantalla de bloqueo
+
+Captura difuminada con hora y fecha (Super + L).
+
+![Pantalla de bloqueo](screenshots/bloqueo.png)
