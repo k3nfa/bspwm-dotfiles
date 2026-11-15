@@ -4,10 +4,10 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Escritorios (6, como los puntos de la polybar)
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 # Apariencia
-bspc config border_width         2
+bspc config border_width         1
 bspc config window_gap           10
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
@@ -31,9 +31,8 @@ bspc rule -a Pavucontrol state=floating
 command -v vmware-user-suid-wrapper >/dev/null && vmware-user-suid-wrapper &
 
 # Polybar
-~/.config/polybar/launch.sh &
+# ~/.config/polybar/launch.sh &
 
-bspc config top_padding 44
 bspc config ignore_ewmh_struts true
 
 # Eww (calendario)
@@ -44,3 +43,13 @@ bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
+
+# Espacio para la barra lateral (Eww)
+bspc config left_padding 48
+bspc config top_padding 7
+bspc config bottom_padding 7
+bspc config right_padding 7
+
+# Selector de fondos a pantalla completa
+bspc rule -a Wallpicker state=fullscreen border=off focus=on
+bspc rule -a "*:wallpicker" state=fullscreen border=off focus=on

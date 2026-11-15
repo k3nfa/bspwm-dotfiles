@@ -48,3 +48,40 @@ bindkey -M emacs '\e\e' sudo-command-line
 
 # fzf: Ctrl+R historial, Ctrl+T archivos, Alt+C directorios
 command -v fzf >/dev/null && source <(fzf --zsh)
+
+# SSH con colores en máquinas remotas
+alias ssh='TERM=xterm-256color ssh'
+
+extractPorts () {
+	if [ -z "$1" ]; then
+		echo -e "\n[!] Uso: extractPorts <archivo-nmap-greppable>\n"
+		return 1
+	fi
+
+	ports="$(cat "$1" | grep -oP '\d{1,5}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')"
+	ip_address="$(cat "$1" | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | sort -u | head -n 1)"
+
+	echo -e "\n[*] Extracting information...\n" > extractPorts.tmp
+	echo -e "\t[*] IP Address: $ip_address" >> extractPorts.tmp
+	echo -e "\t[*] Open ports: $ports\n" >> extractPorts.tmp
+
+	echo -n $ports | xsel -b
+	echo -e "[*] Ports copied to clipboard\n" >> extractPorts.tmp
+
+	batcat -l java extractPorts.tmp
+	rm extractPorts.tmp
+}
+
+
+
+# Recordar la ultima carpeta usada y abrir nuevas terminales ahi
+autoload -Uz add-zsh-hook
+
+_save_cwd() {
+	pwd > "$HOME/.last_dir"
+}
+add-zsh-hook chpwd _save_cwd
+
+if [ -f "$HOME/.last_dir" ]; then
+	cd "$(cat "$HOME/.last_dir")" 2>/dev/null
+fi

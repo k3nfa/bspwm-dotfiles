@@ -14,7 +14,9 @@
 
 (defwindow calendario
   :monitor 0
-  :geometry (geometry :x "20px" :y "60px" :width "320px" :anchor "top right")
+  :geometry (geometry :x "20px" :y "20px" :width "320px" :anchor "top right")
   :stacking "bg"
   :windowtype "dock"
   (reloj))
+
+(include "./sidebar.yuck")

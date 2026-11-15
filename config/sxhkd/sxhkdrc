@@ -2,7 +2,7 @@
 super + Return
     kitty
 super + d
-    rofi -show drun
+    ~/.config/rofi/launcher.sh
 
 # Selector de wallpapers (lo creamos en el paso 4)
 super + w
@@ -37,8 +37,8 @@ super + {_,shift + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 
 # Ir a escritorio / mandar ventana a escritorio
-super + {_,shift + }{1-6}
-    bspc {desktop -f,node -d} '^{1-6}'
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Redimensionar con Super + Alt + flechas
 super + alt + {Left,Down,Up,Right}

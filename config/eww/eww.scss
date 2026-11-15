@@ -44,3 +44,31 @@ calendar.header { color: #cba6f7; font-weight: bold; }
 calendar.button { color: #cba6f7; padding: 2px 8px; }
 calendar:selected { color: #181825; background-color: #cba6f7; border-radius: 6px; }
 calendar:indeterminate { color: #f38ba8; }
+
+/* ---- Barra vertical ---- */
+.barra { background-color: rgba(10, 12, 20, 0.96); border-radius: 14px; padding: 6px 4px; }
+.grupo { background-color: rgba(17, 19, 31, 0.96); border-radius: 14px; padding: 6px 0; margin: 0; }
+.cell { min-width: 40px; min-height: 36px; }
+.celld { min-width: 40px; min-height: 50px; }
+.ic { font-family: "Hack Nerd Font Mono"; font-size: 20px; color: #f5f7ff; }
+.logo { font-size: 26px; color: #4dabff; }
+.fox { color: #ff9e3d; }
+.term { color: #50fa7b; }
+.disc { color: #8b9bff; }
+.dir { color: #ffd23f; }
+.ok { color: #50fa7b; }
+.ipok { color: #4dabff; }
+.bad { color: #ff5c7c; }
+.hot { color: #ff5c7c; }
+.dim { color: #6c7086; }
+.pwr { color: #ff5c7c; font-size: 21px; }
+.val { font-family: "Hack Nerd Font Mono"; font-size: 11px; font-weight: bold; color: #f5f7ff; }
+.dato.vol .ic, .dato.vol .val { color: #ff9e3d; }
+.dato.upd .ic, .dato.upd .val { color: #ffd23f; }
+.dato.ram .ic, .dato.ram .val { color: #c084ff; }
+.ws { min-width: 7px; min-height: 7px; margin: 6px 0; border-radius: 99px; border: 1px solid #6c7086; }
+.ws.busy { background-color: #a3adc2; border-color: #a3adc2; }
+.ws.focused { background-color: #ff5c7c; border-color: #ff5c7c; }
+.reloj-v { padding: 4px 0; }
+.hh, .mm { font-family: "Hack Nerd Font Mono"; font-size: 14px; font-weight: bold; color: #f5f7ff; }
+.spot { color: #1ed760; }

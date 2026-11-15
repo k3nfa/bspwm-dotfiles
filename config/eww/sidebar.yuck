@@ -1,0 +1,65 @@
+(defvar dots_open true)
+(deflisten workspaces :initial "[]" "~/.config/eww/scripts/ws.sh")
+(defpoll vol :interval "2s" "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | head -1 | tr -d %")
+(defpoll mute :interval "2s" "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'")
+(defpoll upd :interval "1800s" "apt list --upgradable 2>/dev/null | tail -n +2 | wc -l")
+(defpoll ram :interval "5s" "free | awk '/Mem/{print int($3/$2*100)}'")
+(defpoll ip :interval "5s" "~/.config/eww/scripts/estado.sh ip")
+(defpoll vpn :interval "3s" "~/.config/eww/scripts/estado.sh vpn")
+(defpoll objetivo :interval "2s" "~/.config/eww/scripts/estado.sh target")
+
+(defwidget grupo []
+  (box :class "grupo" :orientation "v" :space-evenly false :halign "fill"
+    (children)))
+
+(defwidget icono [glifo clase accion tip]
+  (eventbox :onclick accion :tooltip tip
+    (box :class "cell" :halign "fill" :valign "center"
+      (label :class "ic ${clase}" :text glifo :halign "center" :valign "center" :hexpand true))))
+
+(defwidget dato [glifo clase valor accion tip]
+  (eventbox :onclick accion :tooltip tip
+    (box :class "celld dato ${clase}" :orientation "v" :space-evenly false :halign "fill" :valign "center"
+      (label :class "ic" :text glifo :halign "center")
+      (label :class "val" :text valor :halign "center"))))
+
+(defwidget puntos []
+  (box :orientation "v" :space-evenly false :halign "center"
+    (for w in workspaces
+      (eventbox :onclick "bspc desktop -f ^${w.n}" :halign "center"
+        (box :class "ws ${w.s}" :halign "center")))))
+
+(defwidget reloj-v []
+  (eventbox :onclick "~/.config/eww/toggle.sh"
+    (box :class "reloj-v" :orientation "v" :space-evenly false :halign "center"
+      (label :class "hh" :text hora)
+      (label :class "mm" :text minuto))))
+
+(defwindow barra
+  :monitor 0
+  :geometry (geometry :x "0px" :y "0px" :width "48px" :height "99%" :anchor "left center")
+  :stacking "fg"
+  :windowtype "dock"
+  (centerbox :class "barra" :orientation "v"
+    (box :orientation "v" :space-evenly false :valign "start"
+      (grupo
+        (icono :glifo "" :clase "logo" :accion "~/.config/eww/scripts/dots.sh" :tip "Mostrar u ocultar escritorios")
+        (revealer :transition "slidedown" :reveal dots_open :duration "250ms" (puntos))))
+    (box :orientation "v" :space-evenly false :valign "center"
+      (grupo
+        (icono :glifo "" :clase "fox" :accion "(firefox-esr || firefox) &" :tip "Firefox")
+        (icono :glifo "" :clase "spot" :accion "flatpak run com.spotify.Client &" :tip "Spotify")
+        (icono :glifo "" :clase "term" :accion "kitty &" :tip "Terminal")
+        (icono :glifo "󰙯" :clase "disc" :accion "(firefox-esr https://discord.com/app || firefox https://discord.com/app) &" :tip "Discord")
+        (icono :glifo "" :clase "dir" :accion "xdg-open ~ &" :tip "Archivos")
+        (reloj-v)))
+    (box :orientation "v" :space-evenly false :valign "end" :spacing 8
+      (grupo
+        (icono :glifo "" :clase {objetivo != "" ? "hot" : "dim"} :accion "echo -n ${objetivo} | xclip -selection clipboard" :tip {objetivo != "" ? objetivo : "Sin objetivo"})
+        (icono :glifo "" :clase {vpn != "" ? "ok" : "dim"} :accion "echo -n ${vpn} | xclip -selection clipboard" :tip {vpn != "" ? vpn : "VPN desconectada"})
+        (icono :glifo "󰩟" :clase {ip != "" ? "ipok" : "bad"} :accion "echo -n ${ip} | xclip -selection clipboard" :tip {ip != "" ? ip : "Sin red"})
+        (dato :glifo {mute == "yes" ? "" : ""} :clase "vol" :valor vol :accion "pactl set-sink-mute @DEFAULT_SINK@ toggle" :tip "Volumen (clic: silenciar)")
+        (dato :glifo "" :clase "upd" :valor upd :accion "kitty -e sh -c 'apt list --upgradable; read -n1' &" :tip "Actualizaciones")
+        (dato :glifo "" :clase "ram" :valor ram :accion "" :tip "Memoria RAM"))
+      (grupo
+        (icono :glifo "" :clase "pwr" :accion "~/.config/eww/scripts/powermenu.sh" :tip "Apagar")))))

@@ -1,6 +1,6 @@
 # Entorno bspwm para Parrot y Kali
 
-bspwm + sxhkd + polybar (píldoras) + picom (animaciones) + rofi + kitty + Powerlevel10k, con calendario en Eww, bloqueo de pantalla, cava, fastfetch, lsd y bat.
+bspwm + sxhkd + barra lateral vertical en Eww + picom (animaciones) + rofi + kitty + Powerlevel10k, con selector de fondos tipo carrusel, lanzador que toma el color del fondo, calendario, bloqueo de pantalla, cava, fastfetch, lsd y bat.
 
 ## Instalación
 
@@ -19,15 +19,16 @@ Probado en Parrot Security. En una VM de VMware activa la **aceleración 3D** (s
 | Atajo | Acción |
 |---|---|
 | Super + Enter / Q | Abrir / cerrar terminal |
-| Super + D | Lanzador (rofi) |
-| Super + W | Selector de wallpapers |
+| Super + D | Lanzador (rofi), con el color de tu fondo |
+| Super + W | Selector de fondos (carrusel) |
 | Super + L | Bloquear pantalla |
 | Super + C | Mostrar / ocultar calendario |
+| Clic en el logo de la barra | Mostrar u ocultar los escritorios |
 | Super + Shift + F | Firefox |
 | Super + Esc | Recargar atajos |
 | Super + Shift + R | Recargar entorno |
 | Super + Shift + Q | Cerrar sesión |
-| Super + 1-6 / Shift + 1-6 | Ir a escritorio / enviar ventana |
+| Super + 1-0 / Shift + 1-0 | Ir a escritorio / enviar ventana |
 | Super + T / Shift + T / S / F | Encajada / pseudo / flotante / pantalla completa |
 | Super + M | Monocle |
 | Super + Flechas / Shift + Flechas | Enfocar / intercambiar |
@@ -45,15 +46,21 @@ Para fijar un objetivo en la barra: `settarget 10.10.11.5 nombre` y `cleartarget
 
 ### Escritorio
 
-Polybar, fastfetch, cava, cmatrix, lanzador de rofi y calendario de Eww.
+Barra lateral en Eww, cava, fastfetch y Spotify con transparencia.
 
 ![Escritorio](screenshots/escritorio.png)
 
-### Selector de wallpapers
+### Selector de fondos
 
-Super + W abre las miniaturas y cambia el fondo al instante.
+Super + W abre el carrusel; Enter aplica el fondo.
 
-![Selector de wallpapers](screenshots/wallpapers.png)
+![Selector de fondos](screenshots/wallpapers.png)
+
+### Lanzador
+
+Super + D. La imagen y el color de acento salen del fondo que tengas puesto.
+
+![Lanzador](screenshots/rofi.png)
 
 ### Pantalla de bloqueo
 

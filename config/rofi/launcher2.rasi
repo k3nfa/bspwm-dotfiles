@@ -1,0 +1,91 @@
+@import "/home/k3nfa/.cache/rofi-launcher/colors.rasi"
+configuration {
+  modi: "drun,run,window";
+  show-icons: true;
+  display-drun: "Apps";
+  display-run: "Comandos";
+  display-window: "Ventanas";
+  drun-display-format: "{name}";
+  window-format: "{w} · {c} · {t}";
+}
+
+* {
+  bg: #0b0b12;
+  fg: #e6e6f0;
+  dim: #9a9ab0;
+  background-color: transparent;
+  text-color: @fg;
+  font: "Hack Nerd Font 11";
+}
+
+window {
+  width: 900px;
+  height: 550px;
+  padding: 0;
+  border: 1px;
+  border-radius: 16px;
+  border-color: #ffffff22;
+  background-color: @bg;
+  background-image: url("/home/k3nfa/.cache/rofi-launcher/bg.png", none);
+}
+
+mainbox {
+  orientation: horizontal;
+  spacing: 0;
+  children: [ imagebox, listbox ];
+}
+
+imagebox {
+  expand: false;
+  width: 320px;
+  background-image: url("/home/k3nfa/.cache/rofi-launcher/left.png", none);
+  children: [ textbox-img ];
+}
+textbox-img { expand: true; str: " "; }
+
+listbox {
+  expand: true;
+  orientation: vertical;
+  padding: 24px 24px 20px 24px;
+  spacing: 14px;
+  children: [ inputbar, listview, mode-switcher ];
+}
+
+inputbar {
+  padding: 12px 16px;
+  spacing: 10px;
+  border-radius: 10px;
+  background-color: #ffffff10;
+  children: [ prompt, entry ];
+}
+prompt { text-color: @accent; font: "Hack Nerd Font Bold 11"; }
+entry { placeholder: "Buscar..."; placeholder-color: @dim; }
+
+listview {
+  columns: 1;
+  lines: 7;
+  spacing: 6px;
+  scrollbar: false;
+  fixed-height: true;
+  cycle: true;
+}
+
+element {
+  padding: 8px 12px;
+  spacing: 14px;
+  border-radius: 10px;
+}
+element normal.normal, element alternate.normal { background-color: transparent; text-color: @fg; }
+element selected.normal { background-color: @accent; text-color: @accent-fg; }
+element-icon { size: 24px; }
+element-text { vertical-align: 0.5; text-color: inherit; }
+
+mode-switcher { spacing: 10px; }
+button {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff10;
+  text-color: @dim;
+  horizontal-align: 0.5;
+}
+button selected { background-color: @accent; text-color: @accent-fg; }

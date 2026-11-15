@@ -128,7 +128,7 @@ fi
 BASE=(bspwm sxhkd polybar picom kitty rofi feh zsh git curl wget unzip
   build-essential python3 python3-pip lua5.4 sassc imagemagick fonts-font-awesome
   xdotool xclip brightnessctl playerctl pulseaudio-utils x11-utils mesa-utils i3lock
-  zsh-autosuggestions zsh-syntax-highlighting fzf bat)
+  zsh-autosuggestions zsh-syntax-highlighting fzf bat python3-gi python3-gi-cairo gir1.2-gtk-3.0)
 EXTRA=(cava fastfetch lsd cmatrix)
 APT="sudo env DEBIAN_FRONTEND=noninteractive apt-get"
 BK="$HOME/.entorno-backup-$(date +%Y%m%d-%H%M%S)"
@@ -172,6 +172,10 @@ copy_configs() {
   chmod +x ~/.config/bspwm/bspwmrc ~/.config/bspwm/scripts/* \
            ~/.config/polybar/launch.sh ~/.config/polybar/scripts/* \
            ~/.config/eww/*.sh ~/.config/eww/scripts/* ~/.local/bin/* 2>/dev/null
+
+  # Ancho de pantalla para la animación de picom
+  SW=$(xdpyinfo 2>/dev/null | awk '/dimensions:/{split($2,a,"x"); print a[1]; exit}')
+  [ -n "$SW" ] && sed -i -E "s/start = \"[0-9]+ - window-x\"/start = \"$SW - window-x\"/" ~/.config/picom/picom.conf
 
   # Fondo inicial
   W=$(ls ~/Wallpapers/* 2>/dev/null | head -1)
