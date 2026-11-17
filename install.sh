@@ -171,7 +171,7 @@ copy_configs() {
 
   chmod +x ~/.config/bspwm/bspwmrc ~/.config/bspwm/scripts/* \
            ~/.config/polybar/launch.sh ~/.config/polybar/scripts/* \
-           ~/.config/eww/*.sh ~/.config/eww/scripts/* ~/.local/bin/* 2>/dev/null
+           ~/.config/eww/*.sh ~/.config/eww/scripts/* ~/.config/picom/start.sh ~/.config/rofi/*.sh ~/.config/rofi/accent.py ~/.local/bin/* 2>/dev/null
 
   # Ancho de pantalla para la animación de picom
   SW=$(xdpyinfo 2>/dev/null | awk '/dimensions:/{split($2,a,"x"); print a[1]; exit}')
@@ -226,10 +226,11 @@ fi
 step "Tus configuraciones"
 task "Copiando configuraciones (respaldo en $BK)" copy_configs
 if [ "$DRY" = 0 ]; then
-  GL="$(glxinfo -B 2>/dev/null)"; if echo "$GL" | grep -qi llvmpipe; then
-    task "Sin aceleración 3D: picom ligero, sin animaciones" picom_light
-  elif ! glxinfo -B >/dev/null 2>&1; then
-    warn "No pude comprobar el 3D (¿sin sesión gráfica?). Si picom falla, activa la aceleración 3D."
+  GL="$(glxinfo -B 2>/dev/null)"
+  if [ -z "$GL" ]; then
+    warn "No pude comprobar el 3D (¿sin sesión gráfica?). Picom elegirá su configuración al iniciar bspwm."
+  elif echo "$GL" | grep -qiE 'llvmpipe|softpipe|swrast'; then
+    warn "Sin aceleración 3D: picom usará la versión ligera (sin animaciones). Actívala en tu VM y reinicia sesión."
   fi
 fi
 

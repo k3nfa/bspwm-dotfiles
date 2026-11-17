@@ -20,7 +20,7 @@ bspc config focused_border_color "#ffffff"
 xsetroot -cursor_name left_ptr &
 
 # Compositor (más adelante lo cambiamos por tu picom.conf)
-pgrep -x picom > /dev/null || picom &
+~/.config/picom/start.sh &
 
 # Wallpaper (si ya lo configuraste con feh)
 [ -f ~/.fehbg ] && ~/.fehbg &

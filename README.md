@@ -42,6 +42,11 @@ Probado en Parrot Security. En una VM de VMware activa la **aceleración 3D** (s
 
 Para fijar un objetivo en la barra: `settarget 10.10.11.5 nombre` y `cleartarget`.
 
+## Notas
+
+- **Picom se adapta solo.** Al iniciar bspwm usa la configuración completa (esquinas redondeadas y animaciones) y, si la máquina no tiene aceleración 3D, una ligera. En VMware activa *Accelerate 3D graphics* en la configuración de la VM.
+- **Spotify.** El ícono de la barra abre Spotify si lo instalas (`flatpak install flathub com.spotify.Client`) y, si no, abre el reproductor web en Firefox.
+
 ## Capturas
 
 ### Escritorio

@@ -48,7 +48,7 @@
     (box :orientation "v" :space-evenly false :valign "center"
       (grupo
         (icono :glifo "" :clase "fox" :accion "(firefox-esr || firefox) &" :tip "Firefox")
-        (icono :glifo "" :clase "spot" :accion "flatpak run com.spotify.Client &" :tip "Spotify")
+        (icono :glifo "" :clase "spot" :accion "~/.config/eww/scripts/spotify.sh &" :tip "Spotify")
         (icono :glifo "" :clase "term" :accion "kitty &" :tip "Terminal")
         (icono :glifo "󰙯" :clase "disc" :accion "(firefox-esr https://discord.com/app || firefox https://discord.com/app) &" :tip "Discord")
         (icono :glifo "" :clase "dir" :accion "xdg-open ~ &" :tip "Archivos")
